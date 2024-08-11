@@ -49,18 +49,17 @@ def known_word():
 
 
 try:
-    with open("./data/words_to_learn.csv") as file:
+    with open("words_to_learn.csv") as file:
         csv_data = pandas.read_csv(file)
         french_words = csv_data["French"].tolist()
         eng_translation = csv_data["English"].tolist()
 except FileNotFoundError:
-    with open("./data/french_words.csv") as file:
+    with open("french_words.csv") as file:
         csv_data = pandas.read_csv(file)
         french_words = csv_data["French"].tolist()
         eng_translation = csv_data["English"].tolist()
 
 
-#GUI??
 screen = Tk()
 screen.title("Flash Card App")
 screen.config(bg=BACKGROUND_COLOR, padx=50, pady=50)
@@ -68,8 +67,8 @@ screen.config(bg=BACKGROUND_COLOR, padx=50, pady=50)
 screen_flip = screen.after(3000, flip_card)
 
 #Front Flash Card
-card_front_img = PhotoImage(file="./images/card_front.png")
-card_back_img = PhotoImage(file="./images/card_back.png")
+card_front_img = PhotoImage(file="card_front.png")
+card_back_img = PhotoImage(file="images/card_back.png")
 front_card = Canvas(bg=BACKGROUND_COLOR, width=800, height=530, highlightthickness=0)
 card_img = front_card.create_image(400, 265, image=card_front_img)
 lang = front_card.create_text(400, 150, text="French", font=("Ariel", 40, "italic"))
@@ -77,12 +76,12 @@ rand_word = front_card.create_text(400, 300, text=random_word(), font=("Ariel", 
 front_card.grid(row=0, column=0, columnspan=2)
 
 #RightButton
-right_pic = PhotoImage(file="./images/right.png")
+right_pic = PhotoImage(file="right.png")
 right_button = Button(image=right_pic, bg=BACKGROUND_COLOR, fg=BACKGROUND_COLOR, highlightthickness=0, command=known_word)
 right_button.grid(row=1, column=0)
 
 #WrongButton
-wrong_pic = PhotoImage(file="./images/wrong.png")
+wrong_pic = PhotoImage(file="wrong.png")
 wrong_button = Button(image=wrong_pic, bg=BACKGROUND_COLOR, fg=BACKGROUND_COLOR, highlightthickness=0, command=new_word)
 wrong_button.grid(row=1, column=1)
 
