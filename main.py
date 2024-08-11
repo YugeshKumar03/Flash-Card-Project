@@ -42,7 +42,7 @@ def known_word():
     french_words.pop(index)
     eng_translation.pop(index)
     updated_dict = {"French": french_words, "English": eng_translation}
-    with open("./data/words_to_learn.csv", "w") as file_1:
+    with open("words_to_learn.csv", "w") as file_1:
         df = pandas.DataFrame(updated_dict)
         df.to_csv(file_1, index=False)
     new_word()
@@ -68,7 +68,7 @@ screen_flip = screen.after(3000, flip_card)
 
 #Front Flash Card
 card_front_img = PhotoImage(file="card_front.png")
-card_back_img = PhotoImage(file="images/card_back.png")
+card_back_img = PhotoImage(file="card_back.png")
 front_card = Canvas(bg=BACKGROUND_COLOR, width=800, height=530, highlightthickness=0)
 card_img = front_card.create_image(400, 265, image=card_front_img)
 lang = front_card.create_text(400, 150, text="French", font=("Ariel", 40, "italic"))
